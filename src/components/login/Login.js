@@ -111,6 +111,10 @@ class Login extends React.Component {
       });
   }
 
+  register(){
+    this.props.history.push(`/register`)
+  }
+
   /**
    *  Every time the user enters something in the input field, the state gets updated.
    * @param key (the key of the state for identifying the field that needs to be updated)
@@ -129,7 +133,9 @@ class Login extends React.Component {
    * You may call setState() immediately in componentDidMount().
    * It will trigger an extra rendering, but it will happen before the browser updates the screen.
    */
-  componentDidMount() {}
+  componentDidMount() {
+
+  }
 
   render() {
     return (
@@ -159,6 +165,16 @@ class Login extends React.Component {
                 }}
               >
                 Login
+              </Button>
+            </ButtonContainer>
+            <ButtonContainer>
+              <Button
+                  width="50%"
+                  onClick={() => {
+                    this.register();
+                  }}
+              >
+                Register
               </Button>
             </ButtonContainer>
           </Form>
