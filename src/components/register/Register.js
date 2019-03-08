@@ -20,7 +20,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 60%;
-  height: 600px;
+  height: 700px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 37px;
@@ -75,7 +75,8 @@ class Register extends React.Component {
             username: null,
             email: null,
             name: null,
-            forename: null
+            forename: null,
+            birthday: null
         };
     }
 
@@ -96,16 +97,14 @@ class Register extends React.Component {
                 name: this.state.name,
                 email: this.state.email,
                 username: this.state.username,
-                password: this.state.password
+                password: this.state.password,
+                birthday: this.state.birthday
             })
         })
             .then(response => response.json())
             .then(returnedUser => {
-                const user = new User(returnedUser);
-                // store the token into the local storage
-                localStorage.setItem("token", user.token);
-                // user login successfully worked --> navigate to the route /game in the GameRouter
-                this.props.history.push(`/game`);
+                
+                this.props.history.push(`/login`);
             })
             .catch(err => {
                 if (err.message.match(/Failed to fetch/)) {
@@ -146,6 +145,13 @@ class Register extends React.Component {
                                 this.handleInputChange("email", e.target.value);
                             }}
                         />
+                        <Label>birthday</Label>
+                        <InputField
+                            placeholder="Enter here.."
+                            onChange={e => {
+                                this.handleInputChange("birthday", e.target.value);
+                            }}
+                        />
                         <Label>Username</Label>
                         <InputField
                             placeholder="Enter here.."
@@ -164,7 +170,7 @@ class Register extends React.Component {
                             <Button
                                 width="50%"
                                 onClick={() => {
-                                    //this.send();
+                                    this.send();
                                 }}
                             >
                                 Register
