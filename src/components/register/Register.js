@@ -103,7 +103,7 @@ class Register extends React.Component {
         })
             .then(response => response.json())
             .then(returnedUser => {
-                
+
                 this.props.history.push(`/login`);
             })
             .catch(err => {

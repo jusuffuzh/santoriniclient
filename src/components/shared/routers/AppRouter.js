@@ -5,6 +5,9 @@ import GameRouter from "./GameRouter";
 import { LoginGuard } from "../routeProtectors/LoginGuard";
 import Login from "../../login/Login";
 import Register from "../../register/Register";
+import Menu from "../../menu/Menu";
+import UseroOverview from"../../useroverwiev/UseroOverview"
+import Profile from "../../profile/Profile";
 
 
 /**
@@ -45,7 +48,28 @@ class AppRouter extends React.Component {
               render={() => (
                   <Register />
               )}
-          />
+             />
+            <Route
+                path="/menu"
+                exact
+                render={() => (
+                    <Menu />
+                )}
+            />
+              <Route
+                  path="/useroverwiev"
+                  exact
+                  render={() => (
+                      <UseroOverview />
+                  )}
+              />
+              <Route
+                  path="/profile"
+                  exact
+                  render={() => (
+                      <Profile />
+                  )}
+              />
             <Route path="/" exact render={() => <Redirect to={"/game"} />} />
           </div>
         </Switch>

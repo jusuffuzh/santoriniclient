@@ -7,6 +7,8 @@ import { Spinner } from "../../views/design/Spinner";
 import { Button } from "../../views/design/Button";
 import { withRouter } from "react-router-dom";
 
+
+
 const Container = styled(BaseContainer)`
   color: white;
   text-align: center;

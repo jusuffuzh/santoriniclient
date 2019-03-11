@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Button} from "./design/Button";
 
 const Container = styled.div`
   margin: 6px 0;
@@ -17,8 +18,7 @@ const UserName = styled.div`
 `;
 
 const Name = styled.div`
-  font-weight: bold;
-  color: #06c4ff;
+  font-weight: lighter;
 `;
 
 const Id = styled.div`
@@ -38,8 +38,17 @@ const Id = styled.div`
 const Player = ({ user }) => {
   return (
     <Container>
-      <Name>{user.name}</Name> <UserName>{user.username}</UserName>
-      <Id>Id: {user.id}</Id>
+      <UserName>{user.username}</UserName>
+      <Id>
+            <Button
+                width="100%"
+                onClick={() => {
+                    this.props.history.push(`/profile`)
+                }}
+            >
+                User Profile
+            </Button>
+      </Id>
     </Container>
   );
 };
