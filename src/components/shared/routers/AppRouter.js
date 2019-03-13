@@ -6,7 +6,7 @@ import { LoginGuard } from "../routeProtectors/LoginGuard";
 import Login from "../../login/Login";
 import Register from "../../register/Register";
 import Menu from "../../menu/Menu";
-import UseroOverview from"../../useroverwiev/UseroOverview"
+import Users from "../../users/Users"
 import Profile from "../../profile/Profile";
 
 
@@ -25,14 +25,6 @@ class AppRouter extends React.Component {
       <BrowserRouter>
         <Switch>
           <div>
-            <Route
-              path="/game"
-              render={() => (
-                <GameGuard>
-                  <GameRouter base={"/game"} />
-                </GameGuard>
-              )}
-            />
             <Route
               path="/login"
               exact
@@ -57,20 +49,19 @@ class AppRouter extends React.Component {
                 )}
             />
               <Route
-                  path="/useroverwiev"
+                  path="/users"
                   exact
                   render={() => (
-                      <UseroOverview />
+                      <Users />
                   )}
               />
               <Route
                   path="/profile"
-                  exact
                   render={() => (
                       <Profile />
                   )}
               />
-            <Route path="/" exact render={() => <Redirect to={"/game"} />} />
+            <Route path="/" exact render={() => <Redirect to={"/menu"} />} />
           </div>
         </Switch>
       </BrowserRouter>

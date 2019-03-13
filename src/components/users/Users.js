@@ -26,7 +26,7 @@ const PlayerContainer = styled.li`
   justify-content: center;
 `;
 
-class UserOverview extends React.Component {
+class Useroverview extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -72,7 +72,7 @@ class UserOverview extends React.Component {
                             {this.state.users.map(user => {
                                 return (
                                     <PlayerContainer key={user.id}>
-                                        <Player user={user} />
+                                        <Player user={user} history={this.props.history}/>
                                     </PlayerContainer>
                                 );
                             })}
@@ -92,4 +92,4 @@ class UserOverview extends React.Component {
     }
 }
 
-export default withRouter(UserOverview);
+export default withRouter(Useroverview);

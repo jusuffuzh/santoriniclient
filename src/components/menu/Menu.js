@@ -39,7 +39,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 60%;
-  height: 800px;
+  height: 600px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 37px;
@@ -81,7 +81,11 @@ class Menu extends React.Component {
     }
 
     useroverwiev() {
-        this.props.history.push("/useroverwiev");
+        this.props.history.push("/users");
+    }
+
+    changetoprofile() {
+        this.props.history.push("/profile");
     }
 
     render() {
@@ -103,7 +107,7 @@ class Menu extends React.Component {
                             <Button
                                 width="100%"
                                 onClick={() => {
-                                    this.send();
+                                    this.changetoprofile();
                                 }}
                             >
                                 Profile

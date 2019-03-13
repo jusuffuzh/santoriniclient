@@ -35,7 +35,7 @@ const Id = styled.div`
  * https://reactjs.org/docs/components-and-props.html
  * @FunctionalComponent
  */
-const Player = ({ user }) => {
+const Player = ({user, history}) => {
   return (
     <Container>
       <UserName>{user.username}</UserName>
@@ -43,7 +43,7 @@ const Player = ({ user }) => {
             <Button
                 width="100%"
                 onClick={() => {
-                    this.props.history.push(`/profile`)
+                    history.push(`/profile?id=` + user.id)
                 }}
             >
                 User Profile
