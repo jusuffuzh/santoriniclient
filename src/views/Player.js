@@ -43,7 +43,7 @@ const Player = ({user, history}) => {
             <Button
                 width="100%"
                 onClick={() => {
-                    history.push(`/profile?id=` + user.id)
+                    history.push(`/menu/users/profile?id=` + user.id)
                 }}
             >
                 User Profile

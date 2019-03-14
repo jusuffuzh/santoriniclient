@@ -86,7 +86,7 @@ class Register extends React.Component {
         this.setState({ [key]: value });
     }
 
-    send (){
+    register (){
         fetch(`${getDomain()}/register`, {
             method: "POST",
             headers: {
@@ -162,15 +162,18 @@ class Register extends React.Component {
                         <Label>Password</Label>
                         <InputField
                             placeholder="Enter here.."
+                            type="password"
                             onChange={e => {
                                 this.handleInputChange("password", e.target.value);
                             }}
                         />
                         <ButtonContainer>
                             <Button
+                                disabled={!this.state.forename || !this.state.name || !this.state.email
+                                || !this.state.birthday || !this.state.username || !this.state.password}
                                 width="50%"
                                 onClick={() => {
-                                    this.send();
+                                    this.register();
                                 }}
                             >
                                 Register

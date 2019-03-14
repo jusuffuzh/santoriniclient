@@ -86,10 +86,6 @@ class Profile extends React.Component {
      * If the request is successful, a new user is returned to the front-end and its token is stored in the localStorage.
      */
 
-    getId(){
-
-    }
-
     async componentDidMount() {
         const x = queryString.parse(this.props.location.search);
         await this.setState({ id: x.id });
@@ -123,6 +119,7 @@ class Profile extends React.Component {
                         <Spinner />
                     ) : (
                     <Form>
+                        <h1>fdsfsdfsf</h1>
                         <h1>{this.state.user.username}</h1>
                         <ButtonContainer>
                             <Button

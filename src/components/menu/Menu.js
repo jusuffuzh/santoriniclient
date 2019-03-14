@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { BaseContainer } from "../../helpers/layout";
-import { getDomain } from "../../helpers/getDomain";
-import User from "../shared/models/User";
 import { withRouter } from "react-router-dom";
 
 const FormContainer = styled.div`
@@ -38,7 +36,7 @@ const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60%;
+  width: 200%;
   height: 600px;
   font-size: 16px;
   font-weight: 300;
@@ -80,14 +78,6 @@ class Menu extends React.Component {
         this.props.history.push("/login");
     }
 
-    useroverwiev() {
-        this.props.history.push("/users");
-    }
-
-    changetoprofile() {
-        this.props.history.push("/profile");
-    }
-
     render() {
         return (
             <BaseContainer>
@@ -97,7 +87,6 @@ class Menu extends React.Component {
                             <Button
                                 width="100%"
                                 onClick={() => {
-                                    this.send();
                                 }}
                             >
                                 Play
@@ -107,7 +96,7 @@ class Menu extends React.Component {
                             <Button
                                 width="100%"
                                 onClick={() => {
-                                    this.changetoprofile();
+                                    this.props.history.push("menu/profile");
                                 }}
                             >
                                 Profile
@@ -117,7 +106,7 @@ class Menu extends React.Component {
                             <Button
                                 width="100%"
                                 onClick={() => {
-                                    this.useroverwiev();
+                                    this.props.history.push("/menu/users");
                                 }}
                             >
                                 User Overview
@@ -127,7 +116,6 @@ class Menu extends React.Component {
                             <Button
                                 width="100%"
                                 onClick={() => {
-                                    this.back();
                                 }}
                             >
                                 Options

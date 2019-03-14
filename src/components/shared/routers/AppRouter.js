@@ -43,24 +43,12 @@ class AppRouter extends React.Component {
              />
             <Route
                 path="/menu"
-                exact
                 render={() => (
-                    <Menu />
+                    <GameGuard>
+                        <GameRouter base={"/menu"} />
+                    </GameGuard>
                 )}
             />
-              <Route
-                  path="/users"
-                  exact
-                  render={() => (
-                      <Users />
-                  )}
-              />
-              <Route
-                  path="/profile"
-                  render={() => (
-                      <Profile />
-                  )}
-              />
             <Route path="/" exact render={() => <Redirect to={"/menu"} />} />
           </div>
         </Switch>
