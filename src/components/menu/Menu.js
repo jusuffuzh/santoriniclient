@@ -37,7 +37,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 200%;
-  height: 600px;
+  height: 500px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 37px;
@@ -90,16 +90,6 @@ class Menu extends React.Component {
                                 }}
                             >
                                 Play
-                            </Button>
-                        </ButtonContainer>
-                        <ButtonContainer>
-                            <Button
-                                width="100%"
-                                onClick={() => {
-                                    this.props.history.push("menu/profile");
-                                }}
-                            >
-                                Profile
                             </Button>
                         </ButtonContainer>
                         <ButtonContainer>

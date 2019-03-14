@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { BaseContainer } from "../../helpers/layout";
 import { getDomain } from "../../helpers/getDomain";
-import User from "../shared/models/User";
 import { withRouter } from "react-router-dom";
 import { Button } from "../../views/design/Button";
 import queryString from "query-string";
@@ -13,7 +12,7 @@ const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 300px;
+  min-height: 1000px;
   justify-content: center;
 `;
 
@@ -21,8 +20,8 @@ const Form = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60%;
-  height: 375px;
+  width: 200%;
+  height: 850px;
   font-size: 16px;
   font-weight: 300;
   padding-left: 37px;
@@ -78,7 +77,11 @@ class Profile extends React.Component {
         super();
         this.state = {
             id: null,
-            user: null
+            user: null,
+            check: null,
+            changedUsername: null,
+            changedBirthday: null
+
         };
     }
     /**
@@ -107,8 +110,38 @@ class Profile extends React.Component {
             });
     }
 
+    handleInputChange(key, value) {
+        // Example: if the key is username, this statement is the equivalent to the following one:
+        // this.setState({'username': value});
+        this.setState({ [key]: value });
+    }
+
+    edit() {
+        fetch(`${getDomain()}/edit/${this.state.id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: this.state.changedUsername,
+                birthday: this.state.changedBirthday
+            })
+        })
+            .then(response => response.json())
+            .then(returnedUser => {
+                this.props.history.push(`/menu/users`);
+            })
+            .catch(err => {
+                if (err.message.match(/Failed to fetch/)) {
+                    alert("The server cannot be reached. Did you start it?");
+                } else {
+                    alert(`Something went wrong during the login: ${err.message}`);
+                }
+            });
+    }
+
     back() {
-        this.props.history.push(`/menu`)
+        this.props.history.push(`/menu/users`)
     }
 
     render() {
@@ -119,8 +152,50 @@ class Profile extends React.Component {
                         <Spinner />
                     ) : (
                     <Form>
-                        <h1>fdsfsdfsf</h1>
-                        <h1>{this.state.user.username}</h1>
+                        <h2>Username:</h2>
+                        <label>{this.state.user.username}</label>
+                        <h2>Online Status:</h2>
+                        <label>{this.state.user.status}</label>
+                        <h2>Creation Date:</h2>
+                        <label>{this.state.user.registrationDate}</label>
+                        <h2>Birthday:</h2>
+                        <label>{this.state.user.birthday}</label>
+                        <h2> </h2>
+                        <Label>Enter password to edit profile</Label>
+                        <InputField
+                            type="password"
+                            placeholder="Enter here.."
+                            onChange={e => {
+                                this.handleInputChange("check", e.target.value);
+                            }}
+                        />
+                        <Label>New Username</Label>
+                        <InputField
+                            disabled={!(this.state.check === this.state.user.password)  }
+                            placeholder="Enter here.."
+                            onChange={e => {
+                                this.handleInputChange("changedUsername", e.target.value);
+                            }}
+                        />
+                        <Label>New Birthday</Label>
+                        <InputField
+                            disabled={!(this.state.check === this.state.user.password)  }
+                            placeholder="Enter here.."
+                            onChange={e => {
+                                this.handleInputChange("changedBirthday", e.target.value);
+                            }}
+                        />
+                        <ButtonContainer>
+                            <Button
+                                disabled={!(this.state.check === this.state.user.password)  }
+                                width="50%"
+                                onClick={() => {
+                                    this.edit()
+                                }}
+                            >
+                                Edit
+                            </Button>
+                        </ButtonContainer>
                         <ButtonContainer>
                             <Button
                                 width="50%"

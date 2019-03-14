@@ -11,10 +11,9 @@ class User {
     this.password = null;
     this.birthday = null;
     this.token = null;
-    this.creationday = null;
+    this.registrationDate = null;
     this.status = null;
-    this.games = null;
-    this.moves = null;
+
     Object.assign(this, data);
   }
 }

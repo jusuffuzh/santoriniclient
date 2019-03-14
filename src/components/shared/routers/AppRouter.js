@@ -5,9 +5,7 @@ import GameRouter from "./GameRouter";
 import { LoginGuard } from "../routeProtectors/LoginGuard";
 import Login from "../../login/Login";
 import Register from "../../register/Register";
-import Menu from "../../menu/Menu";
-import Users from "../../users/Users"
-import Profile from "../../profile/Profile";
+
 
 
 /**

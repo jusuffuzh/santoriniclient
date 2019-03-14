@@ -28,11 +28,6 @@ class GameRouter extends React.Component {
             render={() => <Users />}
         />
         <Route
-            exact
-            path={`${this.props.base}/profile`}
-            render={() => <Profile />}
-        />
-        <Route
             path={`${this.props.base}/users/profile`}
             render={() => <Profile />}
         />

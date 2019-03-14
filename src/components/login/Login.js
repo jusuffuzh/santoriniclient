@@ -96,12 +96,15 @@ class Login extends React.Component {
     })
       .then(response => response.json())
       .then(returnedUser => {
-        const user = new User(returnedUser);
-        // store the token into the local storage
-        localStorage.setItem("token", user.token);
-        // user login successfully worked --> navigate to the route /game in the GameRouter
-        this.props.history.push(`/menu`);
-      })
+        if(returnedUser !== null) {
+          const user = new User(returnedUser);
+          // store the token into the local storage
+          localStorage.setItem("token", user.token);
+          // user login successfully worked --> navigate to the route /game in the GameRouter
+          this.props.history.push(`/menu`);
+        }else{
+          this.props.history.push(`/register`);
+        }})
       .catch(err => {
         if (err.message.match(/Failed to fetch/)) {
           alert("The server cannot be reached. Did you start it?");
